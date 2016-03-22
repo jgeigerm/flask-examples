@@ -12,7 +12,7 @@
         <meta http-squiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}">
-        <link rel="stylesheet" href="{{url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='Font-Awesome/css/font-awesome.min.css')}}">
         <link rel="stylesheet" href="{{url_for('static', filename='custom/custom.css')}}">
         <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}">
         {% block head %}
@@ -34,6 +34,7 @@
                 <ul class="nav navbar-nav">
                     {% if g.user.is_authenticated %}
                     <li id="examplepage"><a href="{{url_for('main.examplepage')}}"><i class="fa fa-dashboard"></i> Example Page</a></li>
+                    <li id="exampleform"><a href="{{url_for('main.exampleform')}}"><i class="fa fa-reorder"></i> Example Form</a></li>
                     {% if g.user.has_role('admin') %}
                     <li id="admin"><a href="{{url_for('admin.index')}}"><i class="fa fa-cog"></i> Admin</a></li>
                     {% endif %}

@@ -1,8 +1,9 @@
 #!flask/bin/python
 from app import db, app
 from flask import render_template, g, Blueprint
-from app.models import *
 from flask.ext.security import current_user, login_required
+from app.models import *
+from app.forms import *
 
 main = Blueprint('main', __name__)
 
@@ -20,6 +21,21 @@ def index():
 @login_required
 def examplepage():
     return render_template('examplepage.html', title="Example Page!")
+
+@main.route('/exampleform', methods=['GET', 'POST'])
+@login_required
+def exampleform():
+    form = ExampleForm()
+    form.user.choices = [ (x.email, x.email) for x in User.query.all() ]
+    if form.validate_on_submit():
+        flash("Good job you filled out the form: {}, {}, {}, {}".format(form.user.data,
+                                                                         form.anumber.data,
+                                                                         form.text.data,
+                                                                         form.checkbox.data),
+              category="good")
+    else:
+        form.flash_errors()
+    return render_template("exampleform.html", title="Example Form!", form=form)
 
 @main.errorhandler(404)
 def not_found_error(error):
