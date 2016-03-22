@@ -35,7 +35,7 @@
                     {% if g.user.is_authenticated %}
                     <li id="examplepage"><a href="{{url_for('main.examplepage')}}"><i class="fa fa-dashboard"></i> Example Page</a></li>
                     <li id="exampleform"><a href="{{url_for('main.exampleform')}}"><i class="fa fa-reorder"></i> Example Form</a></li>
-                    {% if g.user.has_role('admin') %}
+                    {% if g.user.is_admin %}
                     <li id="admin"><a href="{{url_for('admin.index')}}"><i class="fa fa-cog"></i> Admin</a></li>
                     {% endif %}
                     <li id="logout"><a href="{{url_for('security.logout')}}"><i class="fa fa-sign-out"></i> Logout</a></li>
