@@ -5,11 +5,8 @@ from flask.ext.security import current_user, login_required
 from app.models import *
 from app.forms import *
 
+# create a blueprint called main
 main = Blueprint('main', __name__)
-
-@app.before_request
-def before_request():
-    g.user = current_user
 
 @main.route('/')
 @main.route('/index')
@@ -37,6 +34,3 @@ def exampleform():
         form.flash_errors()
     return render_template("exampleform.html", title="Example Form!", form=form)
 
-@main.errorhandler(404)
-def not_found_error(error):
-    return render_template('404.html')
