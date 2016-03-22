@@ -8,14 +8,18 @@ from flask_admin.contrib.sqla import ModelView
 from flask.ext.admin import Admin
 from flask_admin.base import MenuLink
 
+# initialize the application, import config, setup database, setup CSRF protection
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 CsrfProtect(app)
 
+# set up the database model if not already set up
 from app import models
 db.create_all()
 db.session.commit()
+
+# setup the User/Role tables with flask-security, create base users/groups if neccessary
 userstore = SQLAlchemyUserDatastore(db, models.User, models.Role)
 sec = Security(app, userstore)
 try:
@@ -28,9 +32,13 @@ try:
         db.session.commit()
 except: db.session.rollback()
 
-from app.views import main, admin
+# get the view controllers for the app
+from app.views import main, admin, common
 
+# set up main as a blueprint, add as many blueprints as necessary
 app.register_blueprint(main.main)
+
+# configure the admin interface, populate it with pages and links
 app_admin = Admin(app, 'Flask Skeleton Admin', template_mode='bootstrap3', index_view=admin.AdminIndexView())
 app_admin.add_view(admin.UserModelView(models.User, db.session))
 app_admin.add_view(admin.RoleModelView(models.Role, db.session))
