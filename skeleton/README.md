@@ -13,7 +13,7 @@ Features include:
 
 To start using, simply:
 ```
-# git clone https://github.com/jgeigerm/flask-examples
+# git clone --recursive https://github.com/jgeigerm/flask-examples
 # cd flask-examples/skeleton
 # virtualenv flask
 # source flask/bin/activate
