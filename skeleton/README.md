@@ -8,7 +8,7 @@ Features include:
 - An example form
 - 404 and 500 error handling
 - Admin panel for users and roles
-- sqlite backend with mysql support in a few line changes
+- sqlite backend with mysql support in a few line changes (via SQLAlchemy)
 - Comments so you can figure out how stuff works
 
 To start using, simply:
