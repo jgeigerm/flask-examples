@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Shorten a Link!</h2>
+            </div>
+        </div>
+        <form action="" method="POST" name="example">
+            {{form.hidden_tag()}}
+            <div class="form-group">
+                    {{form.link.label}}
+                    {{form.link(class="form-control")}}
+            </div>
+            <div class="form-group">
+                    {{form.suffix.label}}
+                    {{form.suffix(class="form-control")}}
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{form.expnum.label}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-xs-6">
+                    {{form.expnum(class="form-control")}}
+                </div>
+                <div class="form-group col-xs-6">
+                    {{form.exptype(class="form-control")}}
+                </div>
+            </div>
+            {{form.submit(class="btn btn-primary", value="Submit")}}
+        </form>
+    </div>
+</div>
+<div class="container top-pad table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Short Link</th>
+                <th>Link</th>
+                <th>Expiry</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for link in links %}
+            <tr>
+                <td>{{g.base_url}}{{link['suffix']}}</td>
+                <td>{{link['link']}}</td>
+                <td>{{link['expiry']}}<td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
