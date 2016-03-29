@@ -28,7 +28,7 @@ try:
         userstore.find_or_create_role(name='user', description='General user')
         userstore.create_user(email=FIRST_USER_NAME,
                             password=utils.encrypt_password(FIRST_USER_PASS))
-        userstore.add_role_to_user('admin', 'admin')
+        userstore.add_role_to_user(FIRST_USER_NAME, 'admin')
         db.session.commit()
 except: db.session.rollback()
 
