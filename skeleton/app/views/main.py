@@ -34,3 +34,7 @@ def exampleform():
         form.flash_errors()
     return render_template("exampleform.html", title="Example Form!", form=form)
 
+
+@main.route('/break')
+def breakit():
+    raise Exception
