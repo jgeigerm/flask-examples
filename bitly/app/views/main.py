@@ -47,7 +47,7 @@ def create():
         flash('Your link is {}://{}/{}'.format(u.scheme, u.netloc, suffix), category='good')
     else:
         form.flash_errors()
-    return render_template("exampleform.html", title="Create link", form=form, links=session['links'])
+    return render_template("create.html", title="Create link", form=form, links=session['links'])
 
 @main.route('/<suffix>')
 def link(suffix):
