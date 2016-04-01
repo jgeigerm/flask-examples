@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	</head>
+
+	<body>
+		<form method="post" action="{{ url_for('submit') }}">
+			<b><u>Database Search:</u></b><br>
+			<input type="text" name="dbSearch"/>
+			<br>
+
+			<b><u>Database input for a movie:</u></b><br>
+			Movie Name: <input type="text" name="movieName"/></br>
+			<br><br>
+
+			<input type="submit"/>
+		</form>
+		</br></br>
+		
+		<!-- Data being entered into database -->
+		{% if dataEntered %}
+			<h2>Data Entered: {{dataEntered}}</h2>	
+		{% endif %}
+
+		<!-- Print search query -->
+		{% if searchQuery %}
+			{% for s in searchQuery %}
+				<h2>Search Result: {{s['Name']}}</h2>
+			{% endfor %}
+		{% endif %}
+	</body>
+</html>
