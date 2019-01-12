@@ -1,6 +1,6 @@
-from flask.ext.admin import AdminIndexView, BaseView
-from flask.ext.admin.contrib.sqla.view import ModelView
-from flask.ext.security import current_user, utils
+from flask_admin import AdminIndexView, BaseView
+from flask_admin.contrib.sqla.view import ModelView
+from flask_security import current_user, utils
 from wtforms import PasswordField, validators
 from flask import redirect, url_for, flash
 

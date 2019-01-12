@@ -1,7 +1,7 @@
 #!flask/bin/python
 from app import db, app
 from flask import render_template, g, Blueprint
-from flask.ext.security import current_user, login_required
+from flask_security import current_user, login_required
 from app.models import *
 from app.forms import *
 

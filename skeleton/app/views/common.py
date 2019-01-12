@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, g
-from flask.ext.security import current_user
+from flask_security import current_user
 
 """
 This file defines common application view handlers such as for 404's, 500's

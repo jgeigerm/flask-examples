@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, g, session, request
-from flask.ext.security import current_user
-from urlparse import urlparse
+from flask_security import current_user
+from urllib.parse import urlparse
 
 """
 This file defines common application view handlers such as for 404's, 500's

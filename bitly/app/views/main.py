@@ -4,15 +4,14 @@ from flask import render_template, Blueprint, request, redirect, abort, session
 from datetime import timedelta, datetime
 from random import randint, choice
 import string
-from urlparse import urlparse
+from urllib.parse import urlparse
 from app.models import *
 from app.forms import *
 
 # create a blueprint called main
 main = Blueprint('main', __name__)
 
-@main.route('/')
-@main.route('/create', methods=['GET', 'POST'])
+@main.route('/create', methods=['POST'])
 def create():
     form = LinkForm()
     if form.validate_on_submit():
@@ -47,6 +46,11 @@ def create():
         flash('Your link is {}://{}/{}'.format(u.scheme, u.netloc, suffix), category='good')
     else:
         form.flash_errors()
+    return redirect("/")
+
+@main.route('/')
+def index():
+    form = LinkForm()
     return render_template("create.html", title="Create link", form=form, links=session['links'])
 
 @main.route('/<suffix>')

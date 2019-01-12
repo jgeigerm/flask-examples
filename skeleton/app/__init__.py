@@ -1,18 +1,18 @@
 #!flask/bin/python
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.security import Security, SQLAlchemyUserDatastore, utils
+from flask_sqlalchemy import SQLAlchemy
+from flask_security import Security, SQLAlchemyUserDatastore, utils
 from config import FIRST_USER_PASS, FIRST_USER_NAME
-from flask_wtf.csrf import CsrfProtect
+from flask_wtf.csrf import CSRFProtect
 from flask_admin.contrib.sqla import ModelView
-from flask.ext.admin import Admin
+from flask_admin import Admin
 from flask_admin.base import MenuLink
 
 # initialize the application, import config, setup database, setup CSRF protection
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
-CsrfProtect(app)
+CSRFProtect(app)
 
 # set up the database model if not already set up
 from app import models

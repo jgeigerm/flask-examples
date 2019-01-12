@@ -1,6 +1,6 @@
 from app import db
 from sqlalchemy.ext.hybrid import hybrid_property
-from flask.ext.security import UserMixin, RoleMixin, current_user
+from flask_security import UserMixin, RoleMixin, current_user
 from datetime import datetime
 
 """ a third table must be created to relate users to roles by id.
