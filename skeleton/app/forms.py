@@ -1,4 +1,4 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import TextField, SubmitField, SelectField, IntegerField, BooleanField
 from wtforms.validators import DataRequired, ValidationError, Length
 from flask import flash
@@ -7,7 +7,7 @@ from flask import flash
 FlashForm: Adds a flash_errors function that will flash errors on the screen
 Parent: flask.ext.wft.Form
 """
-class FormFlash(Form):
+class FormFlash(FlaskForm):
 
     """flash_errors: iterate through form errors and flash them to the screen"""
     def flash_errors(self):

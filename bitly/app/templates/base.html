@@ -47,7 +47,7 @@
     </div>
         {% with messages = get_flashed_messages(with_categories=True) %}
         {% if messages|length %}
-        <div class="container">
+        <div class="container alert-container">
         {% for category, message in messages %}
             {% if category == 'error' %}
                 <div class="alert alert-danger alert-dismissible fade in">

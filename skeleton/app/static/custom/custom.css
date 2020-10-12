@@ -28,3 +28,8 @@ body {
 .top-pad {
     padding-top: 5em;
 }
+
+.alert-container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
